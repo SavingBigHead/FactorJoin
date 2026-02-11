@@ -3,8 +3,8 @@ import logging
 import time
 import copy
 from BayesCard.Models.BN_single_model import BN_Single
-from Pgmpy.factors.discrete.CPD import TabularCPD
-from Pgmpy.models import BayesianModel
+from pgmpy.factors.discrete.CPD import TabularCPD
+from pgmpy.models import BayesianModel
 logger = logging.getLogger(__name__)
 
 
@@ -227,7 +227,7 @@ class Bayescard_BN(BN_Single):
         Initial the inference method for query
         """
         assert self.algorithm == "chow-liu", "Currently JIT only supports CLT"
-        from Pgmpy.inference import VariableEliminationJIT
+        from pgmpy.inference import VariableEliminationJIT
         cpds, topological_order, topological_order_node = self.align_cpds_in_topological()
         self.cpds = cpds
         self.topological_order = topological_order
