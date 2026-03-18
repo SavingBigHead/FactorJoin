@@ -203,7 +203,7 @@ def equal_freq_binning(name, data, n_bins, data_len, return_bucket=True, return_
             cur_freq = 0
             cur_bin = []
             cur_bin_count = []
-    assert len(uniques) == sum([len(b) for b in bins]), f"some unique values missed or duplicated"
+    assert len(uniques) == sum([len(b) for b in bins]), "some unique values missed or duplicated"
     if return_bucket:
         bucket = Bucket(name, bins, bin_modes, bin_vars, bin_means)
         if return_bin_means:
@@ -553,7 +553,11 @@ def naive_bucketize(data, sample_rate, n_bins=30, primary_keys=[], return_data=T
             if len(idx) == 0:
                 bin_mode = 0
             else:
-                bin_mode = stats.mode(data_key[idx]).count[0]
+                mode_result = stats.mode(data_key[idx])
+                if hasattr(mode_result.count, "__len__"):
+                    bin_mode = mode_result.count[0]
+                else:
+                    bin_mode = mode_result.count
                 temp_data_key[idx] = i
             key_bin_mode.append(bin_mode/sample_rate[key])
         best_buckets[key] = Bucket(key, [], key_bin_mode)
@@ -601,7 +605,12 @@ def bin_all_data_with_existing_binning(bins, data, sample_rate, curr_pk, return_
             if len(curr_data) == 0:
                 bin_modes.append(0)
             else:
-                bin_mode = stats.mode(curr_data).count[0]
+                # bin_mode = stats.mode(curr_data).count[0]
+                mode_result = stats.mode(curr_data)
+                if hasattr(mode_result.count, "__len__"):
+                    bin_mode = mode_result.count[0]
+                else:
+                    bin_mode = mode_result.count
                 if bin_mode > 1:
                     bin_mode /= sample_rate[key]
                 bin_modes.append(bin_mode)
