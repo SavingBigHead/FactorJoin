@@ -5,7 +5,7 @@ import pandas as pd
 import os
 
 
-def test_on_stats(model_path, query_file, save_res=None):
+def test_on_stats(model_path, query_file, save_res=True):
 	with open(model_path, "rb") as f:
 		bound_ensemble = pickle.load(f)
 

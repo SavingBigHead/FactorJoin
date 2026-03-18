@@ -16,14 +16,14 @@ if __name__ == '__main__':
     # preprocess data
     parser.add_argument('--preprocess_data', help='Converting date into int', action='store_true')
     parser.add_argument('--data_folder',
-                        default='/home/ubuntu/End-to-End-CardEst-Benchmark/datasets/stats_simplified/')
+                        default='~/End-to-End-CardEst-Benchmark/datasets/stats_simplified/')
     
 
     # generate models/ensembles
     parser.add_argument('--generate_models', help='Trains BNs on dataset', action='store_true')
     parser.add_argument('--data_path',
-                        default='/home/ubuntu/End-to-End-CardEst-Benchmark/datasets/stats_simplified/{}.csv')
-    parser.add_argument('--model_path', default='/home/ubuntu/data_CE/CE_scheme_models/')
+                        default='~/End-to-End-CardEst-Benchmark/datasets/stats_simplified/{}.csv')
+    parser.add_argument('--model_path', default='~/End-to-End-CardEst-Benchmark/models/')
     parser.add_argument('--n_dim_dist', type=int, default=2, help="The dimension of the distributions")
     parser.add_argument('--n_bins', type=int, default=None, help="The bin size on the id attributes")
     parser.add_argument('--bucket_method', type=str, default="greedy", help="The bin size on the id attributes")
@@ -53,7 +53,7 @@ if __name__ == '__main__':
     # evaluation
     parser.add_argument('--evaluate', help='Evaluates models to compute cardinality bound', action='store_true')
     parser.add_argument('--model_location', nargs='+',
-                        default='/home/ubuntu/data_CE/CE_scheme_models/model_stats_greedy_200.pkl')
+                        default='~/End-to-End-CardEst-Benchmark/models/model_stats_greedy_200.pkl')
     parser.add_argument('--query_file_location', type=str,
                         default=None,
                         help='Location to the test queries')
@@ -67,7 +67,7 @@ if __name__ == '__main__':
                         default=None,
                         help='Location to the pre-materialized sample')
     parser.add_argument('--save_folder',
-                        default='/home/ubuntu/data_CE/CE_scheme_models/')
+                        default='~/End-to-End-CardEst-Benchmark/results/')
 
     # update
     parser.add_argument('--update_evaluate', help='Train and incrementally update the model', action='store_true')
