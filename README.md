@@ -34,7 +34,7 @@ We use two query workloads to evalute our results, STATS-CEB and IMDB-JOB.
    After downloading the dataset, execute the following script to convert the date_time into integers.
    ```bash
    python run_experiment.py --dataset stats --preprocess_data \
-                            --data_folder /home/ubuntu/End-to-End-CardEst-Benchmark/datasets/stats_simplified/
+                            --data_folder ~/End-to-End-CardEst-Benchmark/datasets/stats_simplified/
    ```
    
    The STATS-CEB benchmark query workload can be found at: 
@@ -67,7 +67,7 @@ We use two query workloads to evalute our results, STATS-CEB and IMDB-JOB.
   ```
   python run_experiment.py --dataset stats \
          --generate_models \
-         --data_path /home/ubuntu/End-to-End-CardEst-Benchmark/datasets/stats_simplified/{}.csv \
+         --data_path ~/End-to-End-CardEst-Benchmark/datasets/stats_simplified/{}.csv \
          --model_path checkpoints/ \
          --n_dim_dist 2 \
          --n_bins 200 \
@@ -92,7 +92,7 @@ We use two query workloads to evalute our results, STATS-CEB and IMDB-JOB.
   python run_experiment.py --dataset stats \
          --evaluate \
          --model_path checkpoints/model_stats_greedy_200.pkl \
-         --query_file_location /home/ubuntu/End-to-End-CardEst-Benchmark/workloads/stats_CEB/sub_plan_queries/stats_CEB_sub_queries.sql \
+         --query_file_location ~/End-to-End-CardEst-Benchmark/workloads/stats_CEB/sub_plan_queries/stats_CEB_sub_queries.sql \
          --save_folder checkpoints/
   ```
   model_path: the location for the saved model
@@ -115,7 +115,7 @@ We use two query workloads to evalute our results, STATS-CEB and IMDB-JOB.
   ```
   python send_query.py --dataset stats \
          --method_name [method].txt \
-         --query_file /home/ubuntu/End-to-End-CardEst-Benchmark/workloads/stats_CEB/stats_CEB.sql \
+         --query_file ~/End-to-End-CardEst-Benchmark/workloads/stats_CEB/stats_CEB.sql \
          --save_folder checkpoints/
   ```
   
@@ -126,7 +126,7 @@ We use two query workloads to evalute our results, STATS-CEB and IMDB-JOB.
   ```
   python run_experiment.py --dataset stats \
          --update_evaluate \
-         --data_path /home/ubuntu/End-to-End-CardEst-Benchmark/datasets/stats_simplified \
+         --data_path ~/End-to-End-CardEst-Benchmark/datasets/stats_simplified \
          --model_path checkpoints/update/ \
          --n_dim_dist 2 \
          --n_bins 200 \
@@ -152,7 +152,7 @@ https://github.com/Nathaniel-Han/End-to-End-CardEst-Benchmark#how-to-generate-su
   ```
   python run_experiment.py --dataset imdb \
          --generate_models \
-         --data_path /home/ubuntu/data_CE/imdb/{}.csv \
+         --data_path ~/data_ce/imdb/{}.csv \
          --model_path checkpoints/ \
          --n_dim_dist 1 \
          --bucket_method fixed_start_key \
